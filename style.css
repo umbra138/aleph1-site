@@ -1,0 +1,316 @@
+:root {
+  --bg: #0b0d10;
+  --panel: #12161c;
+  --panel-2: #161b23;
+  --border: #232a35;
+  --text: #e6e9ef;
+  --muted: #9aa4b2;
+  --accent: #6f8cff;
+  --accent-2: #a5b8ff;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent-2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  width: min(980px, 100% - 40px);
+  margin: 0 auto;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(11, 13, 16, 0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  height: 64px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  font-size: 15px;
+}
+
+.brand:hover { text-decoration: none; }
+
+.brand-mark {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  background: linear-gradient(135deg, var(--accent), #3d5bd9);
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 14px;
+}
+
+.nav a { color: var(--muted); }
+.nav a:hover { color: var(--text); text-decoration: none; }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 88px 0 64px;
+  background:
+    radial-gradient(900px 380px at 15% -10%, rgba(111, 140, 255, 0.16), transparent 60%),
+    radial-gradient(700px 320px at 90% 0%, rgba(61, 91, 217, 0.12), transparent 60%);
+  border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+  font-size: clamp(34px, 5vw, 52px);
+  line-height: 1.1;
+  margin: 0 0 18px;
+  letter-spacing: -0.02em;
+}
+
+.hero .tagline {
+  font-size: clamp(17px, 2.2vw, 20px);
+  color: var(--muted);
+  max-width: 640px;
+  margin: 0 0 34px;
+}
+
+.hero .tagline strong { color: var(--text); font-weight: 600; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover { text-decoration: none; transform: translateY(-1px); }
+
+.btn-primary {
+  background: var(--accent);
+  color: #0a0e17;
+}
+
+.btn-primary:hover { background: var(--accent-2); }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+
+.btn-ghost:hover { border-color: var(--muted); background: var(--panel); }
+
+.hero-note {
+  margin-top: 26px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ---------- Sections ---------- */
+section.block { padding: 64px 0; }
+
+section.block + section.block { border-top: 1px solid var(--border); }
+
+.section-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent-2);
+  margin: 0 0 10px;
+}
+
+.section-heading {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 0 0 36px;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- Feature grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+}
+
+.card h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+/* ---------- Steps ---------- */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px 24px 24px 68px;
+}
+
+.step::before {
+  counter-increment: step;
+  content: counter(step);
+  position: absolute;
+  left: 20px;
+  top: 22px;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: rgba(111, 140, 255, 0.12);
+  border: 1px solid rgba(111, 140, 255, 0.35);
+  color: var(--accent-2);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.step h3 { margin: 0 0 6px; font-size: 15.5px; }
+.step p { margin: 0; color: var(--muted); font-size: 14px; }
+
+/* ---------- Permissions ---------- */
+.perms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.perms li {
+  font-size: 13px;
+  color: var(--muted);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px 13px;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 36px 0 48px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+.footer-links a { color: var(--muted); }
+.footer-links a:hover { color: var(--text); }
+
+/* ---------- Legal documents ---------- */
+.doc {
+  padding: 56px 0 80px;
+}
+
+.doc h1 {
+  font-size: clamp(28px, 4vw, 38px);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+
+.doc .updated {
+  color: var(--muted);
+  font-size: 13.5px;
+  margin: 0 0 40px;
+}
+
+.doc h2 {
+  font-size: 19px;
+  margin: 36px 0 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.doc p, .doc li { color: #c7cdd8; font-size: 15px; }
+.doc ul { padding-left: 22px; }
+.doc li { margin-bottom: 7px; }
+
+.doc .callout {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 20px;
+  color: var(--muted);
+  font-size: 14.5px;
+  margin: 22px 0;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 26px;
+  font-size: 14px;
+}
+
+@media (max-width: 640px) {
+  .nav { gap: 14px; font-size: 13px; }
+  .hero { padding: 64px 0 48px; }
+  section.block { padding: 48px 0; }
+  .step { padding-left: 60px; }
+}
